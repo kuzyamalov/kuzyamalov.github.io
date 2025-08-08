@@ -145,10 +145,11 @@ body.is-loaded .site-footer {
 }
 .nav-toggle__bar {
   display: block;
-  width: 100%;
+  width: 24px;
   height: 2px;
   background: var(--text);
   opacity: 0.9;
+  border-radius: 1px;
 }
 .nav-toggle__bar + .nav-toggle__bar { margin-top: 6px; }
 .brand {
@@ -157,6 +158,9 @@ body.is-loaded .site-footer {
   font-size: 18px;
   letter-spacing: 0.5px;
   color: var(--text);
+  line-height: 1;
+  display: flex;
+  align-items: center;
 }
 .nav {
   display: flex;
@@ -188,9 +192,16 @@ body.is-loaded .site-footer {
 
 /* Mobile header layout */
 @media (max-width: 768px) {
-  .nav-wrap { padding: 10px 0; }
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
-  .nav { position: absolute; right: var(--grid-pad); left: var(--grid-pad); top: 64px; }
+  .nav-wrap { padding: 10px 0; position: relative; }
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav { position: absolute; left: 0; right: 0; top: calc(100% + 8px); }
   .nav {
     display: none;
     flex-direction: column;
@@ -199,9 +210,12 @@ body.is-loaded .site-footer {
     border-radius: var(--radius-lg);
     background: color-mix(in oklab, var(--panel), transparent 35%);
     box-shadow: var(--shadow-2), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    z-index: 60;
   }
   .site-header.is-open .nav { display: flex; }
   .nav__link { padding: 12px 14px; font-size: 15px; }
+  /* сброс внешних отступов между полосками, т.к. используем gap на кнопке */
+  .nav-toggle__bar + .nav-toggle__bar { margin-top: 0; }
 }
 
 /* Hero */
