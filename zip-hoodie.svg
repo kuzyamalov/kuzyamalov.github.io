@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <defs>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f6fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="transparent"/>
+  <g filter="url(#softShadow)" transform="translate(0, -6)">
+    <!-- body with split for zipper -->
+    <path d="M340 300 h520 a48 48 0 0 1 48 48 v264 a48 48 0 0 1 -48 48 h-520 a48 48 0 0 1 -48 -48 v-264 a48 48 0 0 1 48 -48 z" fill="url(#cloth)" stroke="#e1e7ee" stroke-width="6"/>
+    <!-- hood -->
+    <path d="M450 300 q150 -120 300 0 v60 q-150 60 -300 0z" fill="#ffffff" stroke="#e1e7ee" stroke-width="6"/>
+    <!-- sleeves -->
+    <path d="M340 360 l-110 90 q-18 15 -18 32 v28 q0 14 12 20 l116 70 z" fill="#ffffff" stroke="#e1e7ee" stroke-width="6"/>
+    <path d="M860 360 l110 90 q18 15 18 32 v28 q0 14 -12 20 l-116 70 z" fill="#ffffff" stroke="#e1e7ee" stroke-width="6"/>
+    <!-- zipper line -->
+    <path d="M600 300 v360" stroke="#cfd7df" stroke-width="6"/>
+    <!-- zipper pull -->
+    <circle cx="600" cy="402" r="8" fill="#cfd7df"/>
+    <rect x="594" y="410" width="12" height="28" rx="4" fill="#cfd7df"/>
+    <!-- split pockets -->
+    <rect x="455" y="540" width="150" height="70" rx="16" fill="#f7f9fc" stroke="#dbe3ea" stroke-width="4"/>
+    <rect x="595" y="540" width="150" height="70" rx="16" fill="#f7f9fc" stroke="#dbe3ea" stroke-width="4"/>
+  </g>
+</svg>
+
+
