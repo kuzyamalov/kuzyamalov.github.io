@@ -192,7 +192,8 @@ body.is-loaded .site-footer {
 
 /* Mobile header layout */
 @media (max-width: 768px) {
-  .nav-wrap { padding: 10px 0; position: relative; }
+  .nav-wrap { padding: 10px 0; position: relative; justify-content: flex-end; }
+  .brand { display: none; }
   .nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -342,5 +343,3 @@ body.is-loaded .site-footer {
 @keyframes shimmer {
   to { transform: translateX(100%); }
 }
-
-
