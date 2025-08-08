@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b0f14" />
+    <title>Banda4erep</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Pixelify+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="is-loading">
+    <!-- Loader / Intro -->
+    <div id="loader" class="loader" aria-hidden="true">
+      <div class="loader__bg"></div>
+      <h1 class="loader__title" aria-label="Banda4erep">Banda4erep</h1>
+    </div>
+
+    <!-- App -->
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">Banda4erep</div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="primary-nav" class="nav" aria-label="Главная навигация">
+          <a href="#hero" class="nav__link is-active">Главная</a>
+          <a href="#catalog" class="nav__link">Каталог</a>
+          <a href="#about" class="nav__link">О нас</a>
+          <a href="#contacts" class="nav__link">Контакты</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <div class="container">
+          <h1 class="hero__title">Banda4erep</h1>
+        </div>
+      </section>
+
+      <section id="catalog" class="products">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Ассортимент</h2>
+            <p class="section-note">скоро будет</p>
+          </div>
+
+          <div class="grid">
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+            <article class="card skeleton">
+              <div class="card__media"></div>
+              <div class="card__body">
+                <h3 class="card__title">Скоро будет</h3>
+                <p class="card__text">готовим коллекцию</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title">О нас</h2>
+          <p class="about__text">
+        Дарова
+          </p>
+        </div>
+      </section>
+
+      <section id="contacts" class="contacts">
+        <div class="container">
+          <h2 class="section-title">Контакты</h2>
+          <p class="contacts__text">
+            йоу
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const root = document.body;
+        const loader = document.getElementById('loader');
+        const header = document.querySelector('.site-header');
+        const toggleBtn = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('primary-nav');
+
+        function finishLoading() {
+          root.classList.add('is-loaded');
+          root.classList.remove('is-loading');
+          if (loader) loader.setAttribute('aria-hidden', 'true');
+        }
+
+        if (document.readyState === 'complete') {
+          setTimeout(finishLoading, 600);
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(finishLoading, 600);
+          });
+        }
+
+        const navLinks = document.querySelectorAll('.nav__link');
+        window.addEventListener('hashchange', function () {
+          const hash = location.hash || '#hero';
+          navLinks.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === hash));
+        });
+
+        // Mobile nav toggle
+        if (toggleBtn && header && nav) {
+          toggleBtn.addEventListener('click', function () {
+            const willOpen = !header.classList.contains('is-open');
+            header.classList.toggle('is-open', willOpen);
+            toggleBtn.setAttribute('aria-expanded', String(willOpen));
+          });
+
+          navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+              header.classList.remove('is-open');
+              if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+            });
+          });
+
+          window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+              header.classList.remove('is-open');
+              if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      })();
+    </script>
+  </body>
+  </html>
+
+
